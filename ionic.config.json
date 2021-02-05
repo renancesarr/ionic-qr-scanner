@@ -1,0 +1,7 @@
+{
+  "name": "frentista-app-convenio",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
