@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Gerar Código Convenio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="ion-padding" *ngIf="dadosForm.placa">
+      <ion-col>
+        <ion-button expand="block" (click)="limparCampos()">Limpar Campos</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">Validar Cliente</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form (ngSubmit)="gerarCupom()">
+        <ion-grid>
+          <ion-row class="ion-padding-top">
+            <ion-col>
+              <ion-item>
+                <ion-label position="floating">Placa do Veiculo</ion-label>
+                <ion-input name="placaVeiculo" [(ngModel)]="dadosForm.placa" required="true"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-padding ion-align-items-center">
+            <ion-col>
+              <ion-button type="submit" expand="block" (click)="validarPlaca()">Validar Placa</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="mensagemDeErroPlaca">
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">Erro</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-grid>
+        <ion-row class="ion-padding">
+          <ion-col>
+            <h1 class="ion-text-center" style="font-size: 3rem;">{{mensagemDeErroPlaca}}</h1>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="cupomDesconto">
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">Código de Desconto</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-grid>
+        <ion-row class="ion-padding">
+          <ion-col>
+            <h1 id="h1CupomDeDesconto" class="ion-text-center" style="font-size: 3rem;">{{cupomDesconto}}</h1>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

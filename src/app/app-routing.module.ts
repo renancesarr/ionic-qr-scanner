@@ -11,6 +11,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'ler-placa-veiculo',
+    loadChildren: () => import('./ler-placa-veiculo/ler-placa-veiculo.module').then( m => m.LerPlacaVeiculoPageModule)
+  },
 ];
 
 @NgModule({

@@ -1,6 +1,23 @@
 import { Component } from '@angular/core';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 import { Platform } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { Plugins } from '@capacitor/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { shareReplay, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+
+
+interface IResquestQRCode {
+  urlRede: string;
+  uuidEmpresa: string;
+}
+
+
+interface HttpOptions {
+  headers: HttpHeaders;
+  body?: object;
+}
 
 @Component({
   selector: 'app-home',
@@ -9,13 +26,34 @@ import { Platform } from '@ionic/angular';
 })
 export class HomePage {
   scanSub: any;
-  qrText: string
+  qrText: IResquestQRCode;
 
-  constructor(public platform: Platform, private qrScanner: QRScanner) {
+
+  constructor(private http: HttpClient, public platform: Platform, private qrScanner: QRScanner, private router: Router) {
     this.platform.backButton.subscribeWithPriority(0, () => {
       document.getElementById('qr-code-scanner').style.opacity = '1';
     });
   }
+
+  public getHttpOptions(): HttpOptions {
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS'
+      })
+    };
+  }
+
+  public get({ urlRede, uuidEmpresa }: IResquestQRCode): Observable<any> {
+    return this.http.get(`${urlRede}/appconvenio/empresa/${uuidEmpresa}`, this.getHttpOptions()).pipe(
+      tap((res) => {
+        return res || {};
+      }),
+      shareReplay(),
+    );
+  }
+
   startScanning() {
     // Optionally request the permission early
     this.qrScanner.prepare().
@@ -27,30 +65,40 @@ export class HomePage {
           const imgQrCode = document.createElement("img");
           imgQrCode.src = "../../assets/Ativo 24.png";
           divQrCode.appendChild(imgQrCode);
-          document.getElementById('qr-code-scanner').style.opacity = '0.2';
-          document.getElementById('container').style.opacity = '0.6';
-          document.getElementById('leitorqr').style.opacity = '1';
+          document.getElementById('qr-code-scanner').style.opacity = '0';
 
           this.scanSub = this.qrScanner.scan()
             .subscribe((textFound: string) => {
               document.getElementById('qr-code-scanner').style.opacity = '1';
-              this.qrScanner.hide();
-              this.scanSub.unsubscribe();
-
-              this.qrText = textFound;
+              this.qrText = JSON.parse(textFound);
               console.log(this.qrText);
-
+              if (navigator.onLine) {
+                this.get(this.qrText).subscribe(data => {
+                  if (data.sucesso == true) {
+                    Plugins.Storage.set({ key: "auth", value: textFound })
+                    this.qrScanner.hide();
+                    this.scanSub.unsubscribe();
+                    this.qrScanner.destroy();
+                    this.router.navigate(['ler-placa-veiculo']);
+                  }
+                }, (err) => {
+                  //tratar a falha de conexao
+                  console.log(err);
+                });
+              } else {
+                //tratar falta de internet
+              }
             }, (err) => {
-              debugger;
+              //tratar erro de leitura
               console.log(err)
             });
         } else if (status.denied) {
+          this.qrScanner.openSettings();
         } else {
 
         }
       })
       .catch((e: any) => console.log('Error is', e));
   }
-
 
 }
