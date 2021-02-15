@@ -50,7 +50,7 @@ Tabela de conteúdos
 
 - [ ] O frentista tem acesso ao aplicativo móvel, onde podem:
   - [x] digitar uma placa de carro para gerar um cupom de desconto;
-    - [] limitar tamanho do campo de placa
+    - [ ] limitar tamanho do campo de placa
   - [ ] digitar codigo gerado pelo cliente no app e gerar um cupom de desconto;
   - [ ] escanear uma placa de carro para gerar um cupom de desconto;
 
@@ -106,7 +106,7 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 Usar a API do PostoAki 
 
 <p align="center">
-  <a href="https://github.com/tgmarinho/README-ecoleta/blob/master/Insomnia_API_Ecoletajson.json" target="_blank"><img src="https://insomnia.rest/images/run.svg" alt="Run in Insomnia"></a>
+  <a href="https://insomnia.rest/run/?label=App%20OCR&uri=https%3A%2F%2Fgithub.com%2Frenancesarr%2Fionic-qr-scanner%2Fblob%2Fmain%2FInsomnia_2021-02-15.json" target="_blank"><img src="https://insomnia.rest/images/run.svg" alt="Run in Insomnia"></a>
 </p>
 
 
