@@ -20,29 +20,22 @@ Tabela de conteúdos
    * [Funcionalidades](#-funcionalidades)
    * [Layout](#-layout)
      * [Mobile](#mobile)
-     * [Web](#web)
    * [Como executar o projeto](#-como-executar-o-projeto)
      * [Pré-requisitos](#pré-requisitos)
-     * [Rodando o Backend (servidor)](#user-content--rodando-o-backend-servidor)
-     * [Rodando a aplicação web (Frontend)](#user-content--rodando-a-aplicação-web-frontend)
+     * [Rodando o Backend (servidor)](#rodando-o-backend-servidor)
+     * [Rodando a aplicação web (Frontend)](#rodando-a-aplicação-mobile)
    * [Tecnologias](#-tecnologias)
-     * [WebSite](#user-content-website--react----typescript)
-     * [Server](#user-content-server--nodejs----typescript)
-     * [Mobile](#user-content-mobile--react-native----typescript)
-   * [Contribuidores](#-contribuidores)
-   * [Como contribuir no projeto](#-como-contribuir-no-projeto)
-   * [Autor](#-autor)
-   * [Licença](#user-content--licença)
+     * [Mobile]()
 <!--te-->
 
 
-## 💻 Sobre o projeto
+## Sobre o projeto
 
 ♻️ AppFrentistaConvenio - é uma forma de conectar empresas parceiras de clientes(Postos) do PostoAki no intuito de usar algum identificador externo para gerar cupom de descontos.
 
 ---
 
-## ⚙️ Funcionalidades
+## Funcionalidades
 
 - [x] Ler QRCode do painel do PostoAqui e receber:
   - [x] uuidEmpresa
@@ -50,7 +43,8 @@ Tabela de conteúdos
 
 - [ ] O frentista tem acesso ao aplicativo móvel, onde podem:
   - [x] digitar uma placa de carro para gerar um cupom de desconto;
-    - [ ] limitar tamanho do campo de placa
+    - [ ] limitar tamanho do campo de placa;
+    - [ ] mascará placa;
   - [ ] digitar codigo gerado pelo cliente no app e gerar um cupom de desconto;
   - [ ] escanear uma placa de carro para gerar um cupom de desconto;
 
@@ -63,7 +57,7 @@ Tabela de conteúdos
 -
 ---
 
-## 🎨 Layout
+## Layout
 
 O layout da aplicação está disponível no Figma:
 
@@ -79,16 +73,16 @@ O layout da aplicação está disponível no Figma:
 // fazer layout como no seguinte exemplo
 
 <p align="center">
-  <img alt="NextLevelWeek" title="#NextLevelWeek" src="./assets/home-mobile.png" width="200px">
+  <img alt="appocrfrentista" title="#appocrfrentista" src="" width="200px">
 
-  <img alt="NextLevelWeek" title="#NextLevelWeek" src="./assets/detalhes-mobile.svg" width="200px">
+  <img alt="appocrfrentista" title="#appocrfrentista" src="." width="200px">
 </p>
 
 ---
 
-## 🚀 Como executar o projeto
+## Como executar o projeto
 
-Este projeto é divido em três partes:
+Este projeto é divido em duas partes:
 1. Backend (API PostoAki) 
 3. Mobile (pasta mobile)
 
@@ -101,7 +95,7 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/), [Ionic](https://ionicframework.com/), [Angular](https://cli.angular.io/). 
 Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
-#### 🎲 Rodando o Backend (servidor)
+#### Rodando o Backend (servidor)
 
 Usar a API do PostoAki 
 
@@ -110,7 +104,7 @@ Usar a API do PostoAki
 </p>
 
 
-#### 🧭 Rodando a aplicação (Mobile)
+#### Rodando a aplicação (Mobile)
 
 ```bash
 
@@ -138,13 +132,11 @@ $ ionic capacitor run android -l --external
 # A aplicação será aberta na porta:8100 - acesse http://localhost:8100
 
 ```
-
 ---
 
-## 🛠 Tecnologias
+## Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
-
 
 #### []**Mobile**  ([Ionic Framework](https://ionicframework.com/)  + [CapacitorJs](https://capacitorjs.com/)  + [TypeScript](https://www.typescriptlang.org/))
 
@@ -156,7 +148,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 #### [](https://github.com/tgmarinho/Ecoleta#utilit%C3%A1rios)**Utilitários**
 
--   Protótipo:  **[Figma](https://www.figma.com/)**  →  **[Protótipo (Ecoleta)](https://www.figma.com/file/1SxgOMojOB2zYT0Mdk28lB/Ecoleta)**
+-   Protótipo:  **[Figma](https://www.figma.com/)**  →  **[Protótipo (Ecoleta)]()**
 -   Teste de API:  **[Insomnia](https://insomnia.rest/)**
 -   Ícones:  **[Feather Icons](https://feathericons.com/)**,  **[Font Awesome](https://fontawesome.com/)**
 -   Fontes:  **[Ubuntu](https://fonts.google.com/specimen/Ubuntu)**,  **[Roboto](https://fonts.google.com/specimen/Roboto)**
